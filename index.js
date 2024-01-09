@@ -192,7 +192,9 @@ function stringToArray(string) {
         const element = string[index];
         if(element === ",") {
             // words = [...words, temp];
-            words[words.length] = temp;
+            if(temp.length > 0) {
+                words[words.length] = temp;
+            }
             temp = [];
             continue;
         }
