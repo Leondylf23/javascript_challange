@@ -4,12 +4,14 @@ var challange = 1;
 console.log(`CHALLANGE ${challange++}`);
 function palindrome(kata) {
     // you can only write your code here!
+    if(kata === undefined) return "Error undefined";
+
     let reversedKata = "";
     for (let index = kata.length - 1; index >= 0; index--) {
         const element = kata[index];
         reversedKata += element;
     }
-    return reversedKata == kata;
+    return reversedKata === kata;
 }
 
 // TEST CASES
@@ -23,10 +25,12 @@ console.log(palindrome('mister')); // false
 console.log(`\n\nCHALLANGE ${challange++}`);
 function hitungJumlahKata(kalimat) {
     // you can only write your code here!
+    if(kalimat === undefined) return "Error undefined";
+
     let spaceCount = 0;
     for (let index = 0; index < kalimat.length; index++) {
         const element = kalimat[index];
-        if (element === " ") {
+        if (element === " " && kalimat[index + 1] != " " && index + 1 != kalimat.length) {
             spaceCount++;
         }
     }
@@ -105,6 +109,8 @@ function removeSpaces(str) {
 
 function passwordGenerator(name) {
     //code di sini
+    if(name === undefined) return "Error undefined";
+
     if (name.length < 5) {
         return "Minimal karakter yang diinputkan adalah 5 karakter";
     }
@@ -115,11 +121,15 @@ console.log(passwordGenerator('Sergei Dragunov')); // 'VPNVGBRdJFGRFs'
 console.log(passwordGenerator('Dimitri Wahyudiputra')); // 'BRTVPJDVYHBwJRTJMJd'
 console.log(passwordGenerator('Alexei')); // 'JFXFLb'
 console.log(passwordGenerator('Alex')); // 'Minimal karakter yang diinputkan adalah 5 karakter'
+console.log(passwordGenerator('Alexei')); // 'JFXFLb'
+
 
 // CHALLANGE 4
 console.log(`\n\nCHALLANGE ${challange++}`);
 function meleeRangedGrouping(str) {
     //your code here
+    if(str === undefined) return "Error undefined";
+
     let melee = [];
     let range = [];
 
@@ -135,13 +145,11 @@ function meleeRangedGrouping(str) {
         } else if (element === ",") {
             if (temp === "Ranged") {
                 range = [...range, hero];
-                hero = "";
-                temp = "";
             } else if (temp === "Melee") {
                 melee = [...melee, hero];
-                hero = "";
-                temp = "";
             }
+            hero = "";
+            temp = "";
             continue;
         }
         temp += element;
@@ -150,13 +158,11 @@ function meleeRangedGrouping(str) {
     if (hero != "" && temp != "") {
         if (temp === "Ranged") {
             range = [...range, hero];
-            hero = "";
-            temp = "";
         } else if (temp === "Melee") {
             melee = [...melee, hero];
-            hero = "";
-            temp = "";
         }
+        hero = "";
+        temp = "";
     }
 
     return range.length > 0 || melee.length > 0 ? [range, melee] : []
@@ -172,10 +178,12 @@ console.log(meleeRangedGrouping('Drow Ranger-Ranged,Chen-Ranged,Dazzle-Ranged,Io
 
 console.log(meleeRangedGrouping('')); // []
 
+
 // CHALLANGE 5
 console.log(`\n\nCHALLANGE ${challange++}`);
 function stringToArray(string) {
     // write your code here
+    if(string === undefined) return "Error undefined";
 
     let words = [];
     let temp = [];
